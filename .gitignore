@@ -26,3 +26,8 @@ hs_err_pid*
 .classpath
 .project
 .settings/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
