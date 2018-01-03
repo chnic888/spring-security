@@ -1,0 +1,5 @@
+CREATE TABLE user_role (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_name VARCHAR(50) NOT NULL,
+  role VARCHAR(50) NOT NULL
+)
