@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.chnic.security.authentication.MyUserDetailService;
+import com.chnic.security.authentication.UserNamePasswordUserDetailService;
 
 @Profile("userdetail")
 @EnableWebSecurity
@@ -18,7 +18,7 @@ import com.chnic.security.authentication.MyUserDetailService;
 public class UserDetailSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private MyUserDetailService myUserDetailService;
+	private UserNamePasswordUserDetailService userNamePasswordUserDetailService;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -28,13 +28,13 @@ public class UserDetailSecurityConfiguration extends WebSecurityConfigurerAdapte
 			.and().logout().logoutUrl("/logout").permitAll();
 	}
 	
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-    	 web.ignoring().antMatchers("/css/**", "/h2-console/**");
-    }
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/css/**", "/h2-console/**");
+	}
 
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(myUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
+		auth.userDetailsService(userNamePasswordUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 }

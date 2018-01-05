@@ -9,19 +9,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user_role")
 public class UserRole {
-	
+
 	@Id
-    @GeneratedValue
+	@GeneratedValue
 	private Integer id;
-	
+
 	@Column(name = "user_name")
 	private String userName;
-	
+
 	@Column(name = "role")
 	private String role;
-	
+
 	public UserRole() {
-	
+
 	}
 
 	public Integer getId() {

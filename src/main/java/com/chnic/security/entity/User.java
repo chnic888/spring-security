@@ -9,22 +9,22 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user")
 public class User {
-	
+
 	@Id
-    @GeneratedValue
+	@GeneratedValue
 	private Integer id;
-	
+
 	@Column(name = "user_name")
 	private String userName;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "enable")
 	private Boolean enable;
-	
+
 	public User() {
-		
+
 	}
 
 	public Integer getId() {

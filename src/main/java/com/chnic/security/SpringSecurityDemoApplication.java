@@ -11,7 +11,7 @@ public class SpringSecurityDemoApplication extends WebMvcConfigurerAdapter {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringSecurityDemoApplication.class, args);
 	}
-	
+
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/login").setViewName("login");

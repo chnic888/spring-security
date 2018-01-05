@@ -7,6 +7,6 @@ import com.chnic.security.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-	
+
 	User findOneByUserName(String userName);
 }
