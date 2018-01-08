@@ -29,5 +29,11 @@ public class SecurityController {
 		SecurityContextHolder.clearContext();
 		return new ModelAndView("login");
 	}
+	
+	@GetMapping(value = "/login")
+	@ResponseStatus(HttpStatus.OK)
+	public ModelAndView login(Map<String, Object> model) {
+		return new ModelAndView("login");
+	}
 
 }

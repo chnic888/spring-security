@@ -44,7 +44,7 @@ public class TokenSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/css/**", "/h2-console/**");
+		web.ignoring().antMatchers("/css/**", "/h2-console/**", "/login*");
 	}
 	
 	@Bean
