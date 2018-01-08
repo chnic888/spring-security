@@ -1,3 +1,4 @@
+
 package com.chnic.security.controller;
 
 import java.util.Date;
@@ -34,6 +35,15 @@ public class SecurityController {
 	@ResponseStatus(HttpStatus.OK)
 	public ModelAndView login(Map<String, Object> model) {
 		return new ModelAndView("login");
+	}
+	
+	@GetMapping(value = "/detail")
+	@ResponseStatus(HttpStatus.OK)
+	public ModelAndView detail(Map<String, Object> model) {
+		String name = SecurityContextHolder.getContext().getAuthentication().getName();
+		model.put("title", name.toUpperCase() + " Details: ");
+		model.put("message", "Fake Detail...");
+		return new ModelAndView("detail");
 	}
 
 }
