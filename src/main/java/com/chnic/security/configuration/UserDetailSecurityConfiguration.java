@@ -1,7 +1,6 @@
 package com.chnic.security.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,7 +13,6 @@ import com.chnic.security.authentication.UserNamePasswordUserDetailService;
 
 @Profile("userdetail")
 @EnableWebSecurity
-@Configuration
 public class UserDetailSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
