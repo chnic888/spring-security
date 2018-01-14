@@ -2,9 +2,11 @@ package com.chnic.security.authentication;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
@@ -34,6 +36,9 @@ public class UserNamePasswordAuthenticationProvider implements AuthenticationPro
 	@Autowired
 	private UserRoleRepository userRoleRepository;
 	
+	@Autowired
+    private RedisTemplate<String, String> redisTemplate;
+	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = (UsernamePasswordAuthenticationToken) authentication;
@@ -58,7 +63,9 @@ public class UserNamePasswordAuthenticationProvider implements AuthenticationPro
 		
 		String token = UUID.randomUUID().toString().replaceAll("-", "");
 		Authentication tokenAuthentication = new TokenAuthentication(token); 
+		
 		SecurityContextHolder.getContext().setAuthentication(tokenAuthentication);
+		redisTemplate.opsForValue().set(token, user.getUserName(), 1, TimeUnit.MINUTES);
 		return tokenAuthentication;
 	}
 

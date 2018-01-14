@@ -4,6 +4,8 @@ package com.chnic.security.controller;
 import java.util.Date;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class SecurityController {
 
+	@Autowired
+    private RedisTemplate<String, String> redisTemplate;
+	
 	@GetMapping(value = "/")
 	@ResponseStatus(HttpStatus.OK)
 	public ModelAndView home(Map<String, Object> model) {
@@ -27,6 +32,10 @@ public class SecurityController {
 	@GetMapping(value = "/logout")
 	@ResponseStatus(HttpStatus.OK)
 	public ModelAndView logout(Map<String, Object> model) {
+		String token = SecurityContextHolder.getContext().getAuthentication().getName();
+		if (redisTemplate.hasKey(token)) {
+			redisTemplate.delete(token);
+		}
 		SecurityContextHolder.clearContext();
 		return new ModelAndView("login");
 	}
