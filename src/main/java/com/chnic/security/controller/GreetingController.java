@@ -22,4 +22,11 @@ public class GreetingController {
 	public String bye() {
 		return "Bye";
 	}
+	
+	@GetMapping(value = "/goodbye/{name}")
+	@ResponseStatus(HttpStatus.OK)
+	public String goodbye(@PathVariable("name") String name) {
+		return "Goodbye " + name;
+	}
+
 }

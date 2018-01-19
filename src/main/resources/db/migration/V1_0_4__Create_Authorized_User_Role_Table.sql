@@ -1,0 +1,5 @@
+CREATE TABLE authorized_user_role (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	client_id VARCHAR(50) NOT NULL,
+	role VARCHAR(50) NOT NULL
+)

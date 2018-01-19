@@ -2,6 +2,7 @@
 package com.chnic.security.controller;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.google.common.collect.Maps;
 
 @RestController
 public class SecurityController {
@@ -53,6 +56,14 @@ public class SecurityController {
 		model.put("title", name.toUpperCase() + " Details: ");
 		model.put("message", "Fake Detail...");
 		return new ModelAndView("detail");
+	}
+	
+	@GetMapping(value = "/test")
+	@ResponseStatus(HttpStatus.OK)
+	public Map<String, String> test() {
+		HashMap<String, String> map = Maps.newHashMap();
+		map.put("label", "Success");
+		return map;
 	}
 
 }
