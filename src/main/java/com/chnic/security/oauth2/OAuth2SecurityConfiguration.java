@@ -19,7 +19,7 @@ import com.chnic.security.authentication.UserNamePasswordUserDetailService;
 @Configuration
 @EnableWebSecurity
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
-public class Oauth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserNamePasswordUserDetailService userNamePasswordUserDetailService;

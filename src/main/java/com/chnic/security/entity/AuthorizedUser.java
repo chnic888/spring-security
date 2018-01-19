@@ -19,6 +19,12 @@ public class AuthorizedUser {
 
 	@Column(name = "client_secret")
 	private String clientSecret;
+	
+	@Column(name = "authorized_grant_type")
+	private String authorizedGrantType;
+	
+	@Column(name = "scope")
+	private String scope;
 
 	@Column(name = "enable")
 	private Boolean enable;
@@ -59,4 +65,19 @@ public class AuthorizedUser {
 		this.enable = enable;
 	}
 
+	public String getAuthorizedGrantType() {
+		return authorizedGrantType;
+	}
+
+	public void setAuthorizedGrantType(String authorizedGrantType) {
+		this.authorizedGrantType = authorizedGrantType;
+	}
+
+	public String getScope() {
+		return scope;
+	}
+
+	public void setScope(String scope) {
+		this.scope = scope;
+	}
 }

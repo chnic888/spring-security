@@ -30,11 +30,11 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     private RedisConnectionFactory redisConnectionFactory;
     
     @Autowired
-    private ClientCredentialsClientDetailsService clientCredentialsClientDetailsService;   
-
+    private OAuth2ClientDetailsService oAuth2ClientDetailsService;
+    
 	@Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.withClientDetails(clientCredentialsClientDetailsService);
+		clients.withClientDetails(oAuth2ClientDetailsService);
     }
 	
     @Override

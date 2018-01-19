@@ -20,7 +20,7 @@ import com.google.common.collect.Lists;
 
 @Profile("oauth2")
 @Component
-public class ClientCredentialsClientDetailsService implements ClientDetailsService {
+public class OAuth2ClientDetailsService implements ClientDetailsService {
 
 	@Autowired
 	private AuthorizedUserRepository authorizedUserRepository;
@@ -37,10 +37,10 @@ public class ClientCredentialsClientDetailsService implements ClientDetailsServi
 		
 		BaseClientDetails baseClientDetails = new BaseClientDetails();
 		baseClientDetails.setResourceIds(AuthorizationServerConfiguration.RESOURCE_ID_LIST);
-		baseClientDetails.setAuthorizedGrantTypes(Lists.newArrayList("password", "refresh_token"));
 		baseClientDetails.setClientId(authorizedUser.getClientId());
 		baseClientDetails.setClientSecret(authorizedUser.getClientSecret());
-		baseClientDetails.setScope(Lists.newArrayList("user", "repo"));
+		baseClientDetails.setScope(Lists.newArrayList(authorizedUser.getScope().split(",")));
+		baseClientDetails.setAuthorizedGrantTypes(Lists.newArrayList(authorizedUser.getAuthorizedGrantType().split(",")));
 		
 		List<AuthorizedUserRole> authorizedUserRoleList = authorizedUserRoleRepository.findByClientId(clientId);
 		List<SimpleGrantedAuthority> authorityList = authorizedUserRoleList.stream()
