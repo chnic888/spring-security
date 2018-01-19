@@ -47,6 +47,7 @@ public class OAuth2ClientDetailsService implements ClientDetailsService {
 				.map(authorizedUserRole -> new SimpleGrantedAuthority(authorizedUserRole.getRole()))
 				.collect(Collectors.toList());
 		baseClientDetails.setAuthorities(authorityList);
+		baseClientDetails.setAccessTokenValiditySeconds(60);
 		
 		return baseClientDetails;
 	}
