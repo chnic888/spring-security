@@ -18,7 +18,7 @@ import com.chnic.security.repository.AuthorizedUserRepository;
 import com.chnic.security.repository.AuthorizedUserRoleRepository;
 import com.google.common.collect.Lists;
 
-@Profile("oauth2")
+@Profile({"oauth2", "authcode"})
 @Component
 public class OAuth2ClientDetailsService implements ClientDetailsService {
 

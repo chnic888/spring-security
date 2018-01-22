@@ -17,7 +17,7 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 
 import com.google.common.collect.Lists;
 
-@Profile("oauth2")
+@Profile({"oauth2", "authcode"})
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
