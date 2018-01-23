@@ -24,7 +24,7 @@ public class OAuth2AuthorizationCodeSecurityConfiguration extends WebSecurityCon
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.requestMatchers().anyRequest()
+		http.requestMatchers().antMatchers("/login", "/oauth/authorize")
 			.and()
 			.authorizeRequests().anyRequest().authenticated()
             .and()
@@ -33,7 +33,7 @@ public class OAuth2AuthorizationCodeSecurityConfiguration extends WebSecurityCon
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/css/**", "/h2-console/**", "/oauth/token");
+		web.ignoring().antMatchers("/css/**", "/h2-console/**");
 	}
 	
 	@Bean

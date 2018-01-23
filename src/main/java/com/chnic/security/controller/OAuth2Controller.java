@@ -18,4 +18,11 @@ public class OAuth2Controller {
 	}
 }
 
+// 1.Apply for a code
 // http://localhost:7070/oauth/authorize?client_id=client3&response_type=code&redirect_uri=http://localhost:7070/oauth2/callback
+
+// 2.Apply for a token by code
+// http://localhost:7070/oauth/token?code=DDEp4C&grant_type=authorization_code&client_id=client3&client_secret=password12345&redirect_uri=http://localhost:7070/oauth2/callback
+
+// 3 Access the api by token
+// http://localhost:7070/api/hello/nick?access_token=ecfea90a-2ed8-48f3-af66-05d6d07cb766
